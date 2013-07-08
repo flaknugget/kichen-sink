@@ -16,12 +16,17 @@
 		<div data-role="page" id="pageFile" data-cache="never">
 			<script type="text/javascript" charset="utf-8">
 				//http://docs.phonegap.com/en/2.3.0/cordova_file_file.md.html#File
-			
-				$("#pageFile").bind('pageshow', function() {
-					$("#fileResult").html("");
-					$("#btnGetFile").off("click").on("click", getFile);	
-					$("#btnCreateFile").off("click").on("click", createFile);
-				});
+				
+				 document.addEventListener("deviceready", onDeviceReady, false);
+				
+				function onDeviceReady() {
+					$("#pageFile").bind('pageshow', function() {
+						$("#fileResult").html("");
+						$("#btnGetFile").off("click").on("click", getFile);	
+						$("#btnCreateFile").off("click").on("click", createFile);
+						$("#btnWriteToFile").off("click").on("click", gotWriteFS);
+					});
+				};
 				
 				function createFile() {
 					$("#fileResult").append("Creating file: " + $("#txtFileName").val() + "<br />");
@@ -81,6 +86,28 @@
 					}
 					$("#fileResult").append("</span><br />");
 				}
+				
+				 function gotWriteFS(fileSystem) {
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+					var fileName = $("#txtFileName").val();
+					fileSystem.root.getFile(fileName, {create: true, exclusive: false}, gotWriteFileEntry, fail);
+				}
+			
+				function gotWriteFileEntry(fileEntry) {
+					fileEntry.createWriter(gotFileWriter, fail);
+				}
+			
+				function gotFileWriter(writer) {
+					var writeText = $("#txtFileName").val();
+					writer.seek(writer.length);
+   					writer.write("<tr><td>"+txtWriteFileName+"</td></tr>");
+					$("#fileResult").append("Appended"+txtWriteFileName+"<br />");
+				}
+				
+				
+				
+				
+				
 			</script>
 		
 			<div data-role="header">
@@ -88,9 +115,13 @@
 			</div><!-- /header -->
 
 			<div data-role="content">	
-				<input type="text" id="txtFileName" data-mini="true" />
+				<input type="text" id="txtFileName" data-mini="true" value="test.txt" />
 				<a href="" data-role="button" id="btnGetFile">Get File</a>
-				<a href="" data-role="button" id="btnCreateFile" data-theme="b">Create File</a>
+				<a href="" data-role="button" id="btnCreateFile" data-theme="b">Create File</a><br>
+				<br>
+				<textarea id="txtWriteFileName" />Test to insert goes here</textarea>
+				<a href="" data-role="button" id="btnWriteToFile" data-theme="b">Write Into File</a><br>
+				<br>
 				<div id="fileResult"></div>
 			</div><!-- /content -->
 
