@@ -17,14 +17,14 @@
 			<script type="text/javascript" charset="utf-8">
 				//http://docs.phonegap.com/en/2.3.0/cordova_file_file.md.html#File
 				
-				 document.addEventListener("deviceready", onDeviceReady, false);
+				document.addEventListener("deviceready", onDeviceReady, false);
 				
 				function onDeviceReady() {
 					$("#pageFile").bind('pageshow', function() {
 						$("#fileResult").html("");
 						$("#btnGetFile").off("click").on("click", getFile);	
 						$("#btnCreateFile").off("click").on("click", createFile);
-						$("#btnWriteToFile").off("click").on("click", gotWriteFS);
+						$("#btnWriteToFile").off("click").on("click", writeFS);
 					});
 				};
 				
@@ -87,8 +87,12 @@
 					$("#fileResult").append("</span><br />");
 				}
 				
-				 function gotWriteFS(fileSystem) {
-					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+				
+				function writeFS(fileSystem) {
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotWriteFS, fail);
+				}
+				 
+				function gotWriteFS(fileSystem) {
 					var fileName = $("#txtFileName").val();
 					fileSystem.root.getFile(fileName, {create: true, exclusive: false}, gotWriteFileEntry, fail);
 				}
@@ -98,13 +102,19 @@
 				}
 			
 				function gotFileWriter(writer) {
-					var writeText = $("#txtFileName").val();
+					var writeText = $("#txtWriteFileName").val();
 					writer.seek(writer.length);
-   					writer.write("<tr><td>"+txtWriteFileName+"</td></tr>");
-					$("#fileResult").append("Appended"+txtWriteFileName+"<br />");
+   					writer.write("<tr><td>"+writeText+"</td></tr>");
+					$("#fileResult").append("Appended"+writeText+"<br />");
 				}
 				
-				
+				function fail(evt) {
+					$("#fileResult").append("<span class='error'>Error");
+					if (evt != undefined && evt.target != undefined && evt.target.error != undefined) {
+						$("#fileResult").append(evt.target.error.code);
+					}
+					$("#fileResult").append("</span><br />");
+				}
 				
 				
 				
@@ -117,10 +127,10 @@
 			<div data-role="content">	
 				<input type="text" id="txtFileName" data-mini="true" value="test.txt" />
 				<a href="" data-role="button" id="btnGetFile">Get File</a>
-				<a href="" data-role="button" id="btnCreateFile" data-theme="b">Create File</a><br>
+				<a href="" data-role="button" id="btnCreateFile">Create File</a><br>
 				<br>
 				<textarea id="txtWriteFileName" />Test to insert goes here</textarea>
-				<a href="" data-role="button" id="btnWriteToFile" data-theme="b">Write Into File</a><br>
+				<a href="" data-role="button" id="btnWriteToFile">Write Into File</a><br>
 				<br>
 				<div id="fileResult"></div>
 			</div><!-- /content -->
