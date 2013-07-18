@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<table>
+  <tr>
+    <td>Name:</td>
+    <td>"+q00firstName+q00lastName+"</td>
+  </tr>
+  <tr>
+    <td>email:</td>
+    <td>"+q00email+"</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>1.	In which sector do you currently work?</strong><br/>
+      <br/>
+      "+q01workSector+"<br/>
+      <strong>Other: "+q01workSectorOther+"</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>2.	In which field do you work?</strong><br/>
+      <br/>
+      "+q02workField+"<br/>
+      <strong>Other: "+q02workSectorOther+"</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>3.	Which category best represents your position?</strong><br/>
+      <br/>
+      "+q03workPosition+"<br/>
+      <strong>Other: "+q03workPositionOther+"</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>4.	Are you familiar with the Communications Security Establishment Canada (CSEC), its role and responsibilities?</strong><br/>
+      <br/>
+      "+q04familiarWithCSEC+"</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>5.	Are you aware of CSEC’s IT Security Learning Centre and the training services it provides?</strong><br/>
+      <br/>
+      "+q04familiarWithCSEC+"</td>
+  </tr>
+</table>
+
+
+
+</body>
+
+
+<table id="myTable" class="tablesorter"> 
+<thead>
+<tr> 
+    <th>Full Name</th> 
+    <th>Email</th> 
+    <th>Language</th> 
+    <th>1. In which sector do you currently work? </th> 
+    <th>2. In which field do you work?</th> 
+    <th>3. Which category best represents your position?</th>
+    <th>4. Are you familiar with the Communications Security Establishment Canada (CSEC), its role and responsibilities?</th> 
+    <th>5. Are you aware of CSEC’s IT Security Learning Centre and the training services it provides?</th> 
+    <th>6. Are you interested in a career at CSEC? </th> 
+    <th>7. Have you implemented, or will you consider implementing CSEC’s Top 4 Mitigation Measures?</th> 
+    <th>8. If you have browsed CSEC’s IT security publications (www.cse-cst.gc.ca), do you find them useful for your job function? </th> 
+    <th>9. Will you attend a CSEC presentation at GTEC 2013?</th> 
+    <th>10. The information presented by CSEC at GTEC 2013 was useful.</th> 
+    <th>11. The CSEC booth staff at GTEC 2013 were helpful.</th> 
+    <th>12. I am concerned about cyber security.</th> 
+    <th>13. I am concerned about mobile security.</th> 
+    <th>14. I am concerned about social media security.</th> 
+    <th>15. Following this event, will you visit the CSEC event website (www.cse-cst.gc.ca/GTEC) for more information?</th>  
+    <th>16.	Please share with us topics you would be interested in learning about from CSEC, or recommendations for future events.</th>  
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>"+q00firstName+" "+q00lastName+"</td>
+    <td>"+q00email+"</td>
+    <td>"+language+"</td>
+    <td>"+q01workSector+"<br /><br />"+q01WorkSectorOther+"</td>
+    <td>"+q02workField+"<br /><br />"+q02workSectorOther+"</td>
+    <td>"+q03workPosition+"<br /><br />"+q03workPositionOther+"</td>
+    <td>"+q04familiarWithCSEC+"</td>
+    <td>"+q05familiarWithCSECLearning+"</td>
+    <td>"+q06careerCSEC+"</td>
+    <td>"+q07implementCSEC+"</td>
+    <td>"+q08usefulPubs+"<br /><br />"+q08usefulPubsWhy+"<br /><br />"+q08usefulPubsTopics+"</td>
+    <td>"+q09presentations+"</td>
+    <td>"+q10usefulInfo+"</td>
+    <td>"+q11helpfulStaff+"</td>
+    <td>"+q12concernedCyberSecurity+"</td>
+    <td>"+q13concernedMobileSecurity+"</td>
+    <td>"+q14concernedSocialSecurity+"</td>
+    <td>"+q15visitCSEC+"</td>
+    <td>"+q16recommendations+"</td>
+</tr>
+</tbody>
+</table>
+
+
+"<tr><td>"+q00firstName+" "+q00lastName+"</td><td>"+q00email+"</td><td>"+language+"</td><td>"+q01workSector+"<br /><br />"+q01WorkSectorOther+"</td><td>"+q02workField+"<br /><br />"+q02workSectorOther+"</td><td>"+q03workPosition+"<br /><br />"+q03workPositionOther+"</td><td>"+q04familiarWithCSEC+"</td><td>"+q05familiarWithCSECLearning+"</td><td>"+q06careerCSEC+"</td><td>"+q07implementCSEC+"</td><td>"+q08usefulPubs+"<br /><br />"+q08usefulPubsWhy+"<br /><br />"+q08usefulPubsTopics+"</td><td>"+q09presentations+"</td><td>"+q10usefulInfo+"</td><td>"+q11helpfulStaff+"</td><td>"+q12concernedCyberSecurity+"</td><td>"+q13concernedMobileSecurity+"</td><td>"+q14concernedSocialSecurity+"</td><td>"+q15visitCSEC+"</td><td>"+q16recommendations+"</td></tr>"
+</html>

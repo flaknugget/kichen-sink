@@ -1,0 +1,65 @@
+q00-firstName
+q00-lastName
+q00-email
+
+q01-workSector
+q01-workSector-industry
+q01-workSector-other
+
+
+q02-workField
+q02-workSector-other
+
+q03-workPosition
+q03-workPosition-other
+
+q04-familiarWithCSEC		radio
+
+q05-familiarWithCSECLearning
+
+q06-careerCSEC
+q07-implementCSEC
+
+q08-usefulPubs
+q08-usefulPubs-why
+q08-usefulPubs-topics
+
+
+q09-presentations
+q10-usefulInfo
+q11-helpfulStaff
+q12-concernedCyberSecurity
+q13-concernedMobileSecurity
+q14-concernedSocialSecurity
+q15-visitCSEC
+q16-recommendations
+
+
+
+
+
+q00firstName			textfield
+q00lastName			textfield
+q00email			textfield
+q01workSector			checkbox		#q01workSectorCheckOther	
+q01WorkSectorOther		textfield		#q01WorkSectorOther		.q01WorkSectorOtherContainer
+q02workField			checkbox
+q02workSectorOther		textfield		#q02qworkSectorOther		.q02workSectorOtherContainer
+q03workPosition			checkbox
+q03workPositionOther		textfield		#q03workPositionOther		.q03workPositionOtherContainer
+q04familiarWithCSEC		radio
+q05familiarWithCSECLearning	radio
+q06careerCSEC			radio
+q07implementCSEC		radio
+q08usefulPubs			radio			#q08usefulPubsNo
+q08usefulPubsWhy		textfield		#q08usefulPubsWhy		.q08usefulPubsWhyContainer
+q08usefulPubsTopics		textfield		#q08usefulPubsTopics		.q08usefulPubsTopicsContainer
+q09presentations		checkbox
+q10usefulInfo			radio
+q11helpfulStaff			radio
+q12concernedCyberSecurity	radio
+q13concernedMobileSecurity	radio
+q14concernedSocialSecurity	radio
+q15visitCSEC			radio
+q16recommendations		textarea
+btnSubmit			submit

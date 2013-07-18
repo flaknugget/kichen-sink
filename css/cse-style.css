@@ -1,0 +1,119 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+/* general column widths */
+
+.clear {
+	clear:both;
+}
+
+.survey-title {
+	font-size: 1.6em;
+	line-height: 1.5em;
+	margin-top: 15px;
+	display:block;
+}
+
+.survey-header-text {
+	font-size: 1.4em;
+	line-height: 1.3em;
+	margin-top: 15px;
+	display:block;
+}
+
+
+.question-text {
+	font-size: 1.1em;
+	line-height: 1.2em;
+	margin-bottom: 15px;
+	display:block;
+}
+
+.question {
+	width: 96%;
+	margin-left: 4%;
+	margin-top: 25px;
+	display:block;
+}
+
+
+
+
+.six-col {
+	float: left; 
+	display: inline; 
+	width: 13%;
+	margin-right: 3%;
+}
+
+.four-col {
+	float: left; 
+	display: inline; 
+	width: 21%;
+	margin-right: 3%
+}
+
+.three-col {
+	float: left; 
+	display: inline; 
+	width: 29%;
+	margin-right: 3%
+}
+
+.two-col {
+	float: left; 
+	display: inline; 
+	width: 45%;
+	margin-right: 3%;
+}
+
+.one-col {
+	float: left; 
+	display: inline; 
+	width: 96%;
+	text-align: left;
+}
+
+.one-third-col {
+	float: left; 
+	display: inline; 
+	width: 37%;
+	margin-right: 2%;
+	text-align: left;
+	vertical-align:middle;
+}
+
+.two-third-col {
+	float: left; 
+	display: inline; 
+	width: 61%;
+	text-align: left;
+	vertical-align:middle;
+}
+
+.one-quart-col {
+	float: left; 
+	display: inline; 
+	width: 23%;
+	margin-right: 2%;
+	text-align: left;
+	vertical-align:middle;
+}
+
+.three-quart-col {
+	float: left; 
+	display: inline; 
+	width: 75%;
+	text-align: left;
+	vertical-align:middle;
+}
+
+.auto-col {
+	float: left; 
+	display: inline; 
+	margin-right: 3%;
+}
+
+
+
+
