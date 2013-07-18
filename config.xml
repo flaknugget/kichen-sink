@@ -47,7 +47,7 @@
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />-->
 	
-	<gap:plugin name="org.apache.cordova.AccelListener" />
+	<!--<gap:plugin name="org.apache.cordova.AccelListener" />
 	<gap:plugin name="org.apache.cordova.CameraLauncher" />
 	<gap:plugin name="org.apache.cordova.Capture"/>
 	<gap:plugin name="org.apache.cordova.CompassListener" />
@@ -60,12 +60,15 @@
 	<gap:plugin name="org.apache.cordova.GeoBroker" />
 	<gap:plugin name="org.apache.cordova.Globalization" />	
 	<gap:plugin name="org.apache.cordova.AudioHandler" />
-	<!--<gap:plugin name="org.apache.cordova.InAppBrowser" />-->
+	<gap:plugin name="org.apache.cordova.InAppBrowser" />
 	<gap:plugin name="org.apache.cordova.Notification"/>
 	<gap:plugin name="org.apache.cordova.SplashScreen"/>
-	<!--<gap:plugin name="org.apache.cordova.Storage" />-->
+	<gap:plugin name="org.apache.cordova.Storage" />-->
 	
 	<gap:plugin name="com.adobe.plugins.gaplugin" />
+	
+	<gap:plugin name="org.apache.cordova.FileUtils" />
+	<gap:plugin name="org.apache.cordova.FileTransfer" />
 	
 	<access origin="*" />
 
