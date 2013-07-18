@@ -3,13 +3,13 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.grappsmobile.pgbtest"
         version   = "0.0.1">
-    <name>Peter's Test App</name>
+    <name>Peter's Test App 03</name>
 
     <description>
         Kitchen Sink of Phonegap Build APIs
     </description>
 
-    <author href="http://phonegap.com" email="shanabus@gmail.com">
+    <author href="http://phonegap.com" email="padamson@bsl.com">
         Peter Adamson
     </author>
 
