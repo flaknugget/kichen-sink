@@ -23,9 +23,11 @@
   <script type="text/javascript" charset="utf-8">
 		
 				
-				alert("device is ready");
+	alert("device is ready");
 				
-				var fileName = "surveysubmission.html";
+				
+				
+	var fileName = "surveysubmission.html";
 	
 	// hide the checkbox 'Other' option text fields	
 	$(".q01WorkSectorOtherContainer").hide();
@@ -75,11 +77,17 @@
 	});
 	
 	
-	jQuery.validator.setDefaults({
+	
+	
+	
+	
+	
+	
+	
+	$.validator.setDefaults({
 	  debug: true,
 	  success: "valid"
-	});
-	
+	});	
 	
 	$("#surveyForm").validate({
 		debug: true,
@@ -164,10 +172,7 @@
 				}
 				
 			
-			}, 
-		messages: {
-			
-		},
+			},
 		submitHandler: function() {
 		
 			// alert( "Valid: " + $("#surveyForm").valid() );
@@ -208,9 +213,11 @@
 			$("#output").append(output);
 			
 			// writeFS();
+			}
 			
-		 }
-	});
+		});	
+	
+	
 					
 </script>
   

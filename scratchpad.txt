@@ -37,6 +37,8 @@ q16-recommendations
 
 
 
+v.0.05
+
 
 q00firstName			textfield
 q00lastName			textfield
@@ -63,3 +65,30 @@ q14concernedSocialSecurity	radio
 q15visitCSEC			radio
 q16recommendations		textarea
 btnSubmit			submit
+
+
+var q00firstName = $("#q00firstName").val();
+var q00lastName = $("#q00lastName").val();
+var q00email = $("#q00email").val();
+var q01workSector = $("#q01workSector").val() + "," + $("#q01WorkSectorOther").val(); 
+var q02workField = $("#q02workField").val() + "," + $("#q02workSectorOther").val();
+var q03workPosition = $("#q03workPosition").val() + "," + $("#q03workPositionOther").val();
+var q04familiarWithCSEC = $("#q04familiarWithCSEC").val();
+var q05familiarWithCSECLearning = $("#q05familiarWithCSECLearning").val();
+var q06careerCSEC = $("#q06careerCSEC").val();
+var q07implementCSEC = $("#q07implementCSEC").val();
+var q08usefulPubs = $("#q08usefulPubs").val();
+var q08usefulPubsWhy = $("#q08usefulPubsWhy").val();
+var q08usefulPubsTopics = $("#q08usefulPubsTopics").val();
+var q09presentations = $("#q09presentations").val();
+var q10usefulInfo = $("#q10usefulInfo").val();
+var q11helpfulStaff = $("#q11helpfulStaff").val();
+var q12concernedCyberSecurity = $("#q12concernedCyberSecurity").val();
+var q13concernedMobileSecurity = $("#q13concernedMobileSecurity").val();
+var q14concernedSocialSecurity = $("#q14concernedSocialSecurity").val();
+var q15visitCSEC = $("#q15visitCSEC").val();
+var q16recommendations = $("#q16recommendations").val();
+
+
+
+
