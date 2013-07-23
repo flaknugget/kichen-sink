@@ -14,10 +14,16 @@
 
 <!-- Form Validation Scripts Go Here -->
 
+<style type="text/css">
+.error {display:block; width:100%; clear:both;}
+</style>
+
 
 <script>
 
 $().ready(function() {
+	
+	var fileName = "surveysubmission.html";
 	
 	// hide the checkbox 'Other' option text fields	
 	$(".q01WorkSectorOtherContainer").hide();
@@ -67,9 +73,15 @@ $().ready(function() {
 	});
 	
 	
+	jQuery.validator.setDefaults({
+	  debug: true,
+	  success: "valid"
+	});
+	
+	
 	$("#surveyForm").validate({
 		debug: true,
-		/* rules: {
+		rules: { /*
 				q00firstName: {
 					required: true,
 					minlength: 2
@@ -147,59 +159,19 @@ $().ready(function() {
 					required: false
 				},
 				btnSubmit: {
-				}
+				} */
 				
 			
-			}, */
+			}, 
 		messages: {
 			
 		},
-		submitHandler: function(form) {
+		submitHandler: function() {
 		
+			alert( "Valid: " + $("#surveyForm").valid() );
+	
+	
 			alert("output working");
-				
-			var q00firstName = $("#q00firstName").val();
-			var q00lastName = $("#q00lastName").val();
-			var q00email = $("#q00email").val();
-			var q01workSector = $("[name='q01workSector'].Checkbox:checked'").map(function() {return this.value;}).get().join(",");
-			var q01workSectorOther =  $("#q01WorkSectorOther").val();
-			var q02workField = $("[name='q02workField'].Checkbox:checked'").map(function() {return this.value;}).get().join(",");
-			var q02workSectorOther = $("#q02workSectorOther").val();
-			var q03workPosition = $("[name='q03workPosition'].Checkbox:checked'").map(function() {return this.value;}).get().join(",");
-			var q03workPositionOther = $("#q03workPositionOther").val();
-			var q04familiarWithCSEC = $("input:radio[name='q04familiarWithCSEC'").val();
-			var q05familiarWithCSECLearning = $("input:radio[name='q05familiarWithCSECLearning'").val();
-			var q06careerCSEC = $("input:radio[name='q06careerCSEC'").val();
-			var q07implementCSEC = $("input:radio[name='q07implementCSEC'").val();
-			var q08usefulPubs = $("input:radio[name='q08usefulPubs'").val();
-			var q08usefulPubsWhy = $("#q08usefulPubsWhy").val();
-			var q08usefulPubsTopics = $("#q08usefulPubsTopics").val();
-			var q09presentations = $("#q09presentations").val();
-			var q10usefulInfo = $("input:radio[name='q10usefulInfo']:checked").val();
-			var q11helpfulStaff = $("input:radio[name='q11helpfulStaff']:checked").val();
-			var q12concernedCyberSecurity = $("input:radio[name='q12concernedCyberSecurity']:checked").val();
-			var q13concernedMobileSecurity = $("input:radio[name='q13concernedMobileSecurity']:checked").val();
-			var q14concernedSocialSecurity = $("input:radio[name='q14concernedSocialSecurity']:checked").val();
-			var q15visitCSEC = $("input:radio[name='q15visitCSEC']:checked").val();
-			var q16recommendations = $("#q16recommendations").val();
-			
-			var output = "<tr><td>"+q00firstName+" "+q00lastName+"</td><td>"+q00email+"</td><td>"+language+"</td><td>"+q01workSector+"<br /><br />"+q01WorkSectorOther+"</td><td>"+q02workField+"<br /><br />"+q02workSectorOther+"</td><td>"+q03workPosition+"<br /><br />"+q03workPositionOther+"</td><td>"+q04familiarWithCSEC+"</td><td>"+q05familiarWithCSECLearning+"</td><td>"+q06careerCSEC+"</td><td>"+q07implementCSEC+"</td><td>"+q08usefulPubs+"<br /><br />"+q08usefulPubsWhy+"<br /><br />"+q08usefulPubsTopics+"</td><td>"+q09presentations+"</td><td>"+q10usefulInfo+"</td><td>"+q11helpfulStaff+"</td><td>"+q12concernedCyberSecurity+"</td><td>"+q13concernedMobileSecurity+"</td><td>"+q14concernedSocialSecurity+"</td><td>"+q15visitCSEC+"</td><td>"+q16recommendations+"</td></tr>";
-			
-			
-			
-			
-			$("#output").append(output);
-			
-		 }
-	});
-	
-	
-	
-	
-	
-$("#outputBtn").click(function() {
-	
-	alert("output working");
 			var language = "English";
 			var q00firstName = $("#q00firstName").val();
 			var q00lastName = $("#q00lastName").val();
@@ -231,32 +203,22 @@ $("#outputBtn").click(function() {
 			// var output = "<tr><td>"+q00firstName+" "+q00lastName+"</td><td>"+q00email+"</td><td>"+language+"</td><td>";
 			
 			alert(output);
+			$("#output").append(output);
 			
 			writeFS();
-	
+			
+		 }
 	});
-	
 });
 
 
-
-
-
-</script>
-</head>
-<body>
-<div data-role="page" id="pageFile" data-cache="never"> 
-    <script type="text/javascript" charset="utf-8">
-				//http://docs.phonegap.com/en/2.3.0/cordova_file_file.md.html#File
-				
-				document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 				
 				function onDeviceReady() {
+					alert("device ready");
 					$("#pageFile").bind('pageshow', function() {
 						$("#fileResult").html("");
 						$("#btnGetFile").off("click").on("click", getFile);	
-						$("#btnCreateFile").off("click").on("click", createFile);
-						$("#btnWriteToFile").off("click").on("click", writeFS);
 					});
 				};
 				
@@ -271,13 +233,12 @@ $("#outputBtn").click(function() {
 				}
 				
 				function gotFSCreate(fileSystem) {
-					var fileName = "test.html";
 					$("#fileResult").append("<span class='success'>gotFSCreate success</span><br />");
 					fileSystem.root.getFile(fileName, {create: true, exclusive: false}, gotFileEntry, fail);
 				}
 				
 				function gotFS(fileSystem) {
-					var fileName = "test.html";
+					
 					$("#fileResult").append("<span class='success'>gotFS success</span><br />");
 					fileSystem.root.getFile(fileName, null, gotFileEntry, fail);
 				}
@@ -325,7 +286,6 @@ $("#outputBtn").click(function() {
 				}
 				 
 				function gotWriteFS(fileSystem) {
-					var fileName = "test.html";
 					fileSystem.root.getFile(fileName, {create: true, exclusive: false}, gotWriteFileEntry, fail);
 				}
 			
@@ -336,7 +296,7 @@ $("#outputBtn").click(function() {
 				function gotFileWriter(writer) {
 					writer.seek(writer.length);
    					writer.write(output);
-					$("#fileResult").append("Appended"+output+"<br />");
+					$("#fileResult").append(output);
 				}
 				
 				function fail(evt) {
@@ -346,15 +306,17 @@ $("#outputBtn").click(function() {
 					}
 					$("#fileResult").append("</span><br />");
 				}
-				
-				
-				
-			</script>
+
+
+</script>
+</head>
+<body>
+<div data-role="page" id="pageFile" data-cache="never"> 
+  
   
   <!-- Question 01 -->
-  <span id="output"></span>
-  <span id="output"></span>
-  <form class="surveyForm" id="surveyForm" method="get" action="#">
+  
+  <form class="surveyForm" id="surveyForm">
     <h2> CSEC GTEC 2013 Questionnaire </h2>
     <h3> Thank you for visiting CSEC’s exhibit. Your feedback will help us improve
       and prepare for future events. </h3>
@@ -378,6 +340,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 1. In which sector do you currently work? </h4>
     <div id="q01-workSector" data-role="fieldcontain">
+    <label for="q01workSector" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal" style="clear:both;">
         <input id="checkbox11" value="Federal Government" type="checkbox" name="q01workSector">
         <label for="checkbox11"> Federal Government </label>
@@ -400,6 +363,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 2. In which field do you work? </h4>
     <div id="q02-workField" data-role="fieldcontain">
+    <label for="q02workField" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="checkbox14" value="IT" type="checkbox" name="q02workField">
         <label for="checkbox14"> IT </label>
@@ -424,6 +388,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 3. Which category best represents your position? </h4>
     <div id="q03-workPosition" data-role="fieldcontain">
+    <label for="q03workPosition" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="checkbox26" value="Executive" type="checkbox" name="q03workPosition">
         <label for="checkbox26"> Executive </label>
@@ -449,6 +414,7 @@ $("#outputBtn").click(function() {
     <div class="ui-grid-a">
       <div class="ui-block-a">
         <div id="q04-familiarWithCSEC" data-role="fieldcontain">
+        <label for="q04familiarWithCSEC" class="error" generated="true"></label>
           <fieldset data-role="controlgroup" data-type="vertical">
             <input id="radio1" name="q04familiarWithCSEC" value="Yes, I have previous knowledge about CSEC"
                 type="radio">
@@ -466,6 +432,7 @@ $("#outputBtn").click(function() {
     <h4> 5. Are you aware of CSEC’s IT Security Learning Centre and the training
       services it provides? </h4>
     <div id="q05-familiarWithCSECLearning" data-role="fieldcontain">
+    <label for="q05familiarWithCSECLearning" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio5" name="q05familiarWithCSECLearning" value="Yes" type="radio">
         <label for="radio5"> Yes </label>
@@ -475,6 +442,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 6. Are you interested in a career at CSEC? </h4>
     <div id="q06-careerCSEC" data-role="fieldcontain">
+    <label for="q06careerCSEC" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio7" name="q06careerCSEC" value="Yes" type="radio">
         <label for="radio7"> Yes </label>
@@ -485,6 +453,7 @@ $("#outputBtn").click(function() {
     <h4> 7. Have you implemented, or will you consider implementing CSEC’s Top
       4 Mitigation Measures? </h4>
     <div id="q07-implementCSEC" data-role="fieldcontain">
+    <label for="q07implementCSEC" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio9" name="q07implementCSEC" value="Yes" type="radio">
         <label for="radio9"> Yes </label>
@@ -498,6 +467,7 @@ $("#outputBtn").click(function() {
     <h4> 8. If you have browsed CSEC’s IT security publications, do you find them
       useful for your job function? </h4>
     <div id="q08-usefulPubs" data-role="fieldcontain">
+    <label for="q08usefulPubs" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="q08usefulPubsYes" name="q08usefulPubs" value="Yes" type="radio">
         <label for="q08usefulPubsYes"> Yes </label>
@@ -548,6 +518,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 10. The information presented by CSEC at GTEC 2013 was useful. </h4>
     <div id="q10-usefulInfo" data-role="fieldcontain">
+    <label for="q10usefulInfo" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio15" name="q10usefulInfo" value="Strongly disagree" type="radio">
         <label for="radio15"> Strongly disagree </label>
@@ -563,6 +534,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 11. The CSEC booth staff at GTEC 2013 were helpful. </h4>
     <div id="q11-helpfulStaff" data-role="fieldcontain">
+    <label for="q11helpfulStaff" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio20" name="q11helpfulStaff" value="Strongly disagree" type="radio">
         <label for="radio20"> Strongly disagree </label>
@@ -578,6 +550,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 12. I am concerned about cyber security. </h4>
     <div id="q12-concernedCyberSecurity" data-role="fieldcontain">
+    <label for="q12concernedCyberSecurity" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio25" name="q12concernedCyberSecurity" value="Strongly disagree" type="radio">
         <label for="radio25"> Strongly disagree </label>
@@ -593,6 +566,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 13. I am concerned about mobile security. </h4>
     <div id="q13-concernedMobileSecurity" data-role="fieldcontain">
+    <label for="q13concernedMobileSecurity" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio30" name="q13concernedMobileSecurity" value="Strongly disagree" type="radio">
         <label for="radio30"> Strongly disagree </label>
@@ -608,6 +582,7 @@ $("#outputBtn").click(function() {
     </div>
     <h4> 14. I am concerned about social media security. </h4>
     <div id="q14-concernedSocialSecurity" data-role="fieldcontain">
+    <label for="q14concernedSocialSecurity" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio35" name="q14concernedSocialSecurity" value="Strongly disagree" type="radio">
         <label for="radio35"> Strongly disagree </label>
@@ -624,6 +599,7 @@ $("#outputBtn").click(function() {
     <h4> 15. Following this event, will you visit the CSEC event website for more
       information? </h4>
     <div id="q15-visitCSEC" data-role="fieldcontain">
+    <label for="q15visitCSEC" class="error" generated="true"></label>
       <fieldset data-role="controlgroup" data-type="horizontal">
         <input id="radio40" name="q15visitCSEC" value="Yes" type="radio">
         <label for="radio40"> Yes </label>
@@ -636,12 +612,19 @@ $("#outputBtn").click(function() {
     <div data-role="fieldcontain">
       <textarea name="q16recommendations" id="q16recommendations" placeholder=""></textarea>
     </div>
-    <input id="btnSubmit" name="btnSubmit" type="submit" data-icon="arrow-r" data-iconpos="left"
+    <input id="outputBtn" name="btnSubmit" type="submit" data-icon="arrow-r" data-iconpos="left"
         value="Submit">
     <!-- /content -->
   </form>
-  <span id="fileResult"></span>
-  <div style="display:block; background-color:#00C; width: 200px; height: 30px;" id="outputBtn"></div>
+  
+  <input id="btnGetFile" name="btnSubmit" type="submit" data-icon="arrow-r" data-iconpos="left" value="Read File">
+  
+  
+  
+  <p>&nbsp;</p>
+  <p><span id="output"></span></p>
+  <p>&nbsp;</p>
+  
   <p><span id="fileResult"></span></p>
 </div>
 
