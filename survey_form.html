@@ -8,7 +8,7 @@
 <script src="js/jquery.1.8.2.min.js" type="text/javascript"></script>
 <script src="js/jquery.mobile.1.2.min.js" type="text/javascript"></script>
 <script src="js/jquery.validate.js" type="text/javascript"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
 <!-- Form Validation Scripts Go Here -->
 
@@ -21,13 +21,11 @@
 <body>
 <div data-role="page" id="pageFile" data-cache="never"> 
   <script type="text/javascript" charset="utf-8">
-		
+	document.addEventListener("deviceready", onDeviceReady, false);	
 				
-	alert("device is ready");
+	function onDeviceReady() {			
 				
 				
-				
-	var fileName = "surveysubmission.html";
 	
 	// hide the checkbox 'Other' option text fields	
 	$(".q01WorkSectorOtherContainer").hide();
@@ -217,7 +215,7 @@
 			
 		});	
 	
-	
+	}
 					
 </script>
   
